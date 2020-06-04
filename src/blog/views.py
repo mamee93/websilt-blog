@@ -3,14 +3,14 @@ from  .models import Post
 # Create your views here.
 
 def post_list(request):
-    all_post= Post.objects.all()
+    all_post= Post.objects.filter(active=True)
     context ={
        'all_post':all_post
     }
     return render(request,'blog/list.html',context)
 
-def post_detail(request, id):
-    post_detail = Post.objects.get(id=id)
+def post_detail(request, slug):
+    post_detail = Post.objects.get(post_slug=slug)
     context ={
         'post':post_detail
     }

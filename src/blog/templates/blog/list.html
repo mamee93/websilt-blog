@@ -1,8 +1,4 @@
-welcom in my website
-<br><br>
+ {% for post in all_post %}
 
-{% for post in all_post %}
-<br>
-{{post}}
-<br>
-{% endfor %}
+
+<a href="{% url 'blog:detail'  post.post_slug %}">{{post}} </a> {% endfor %}
