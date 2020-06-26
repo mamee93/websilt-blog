@@ -1,0 +1,134 @@
+ {% extends "base.html" %} {% block body%}
+<div class="banner text-center">
+    <div class="container">
+        <h1>Sell or Advertise <span class="segment-heading">    anything online </span> with Resale</h1>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+        <a href="post-ad.html">Post Free Ad</a>
+    </div>
+</div>
+<!-- Categories -->
+<!--Vertical Tab-->
+<div class="categories-section main-grid-border">
+    <div class="container">
+        <h2 class="head">Main Categories</h2>
+        <div class="category-list">
+            <div id="parentVerticalTab">
+                <ul class="resp-tabs-list hor_1">
+                    {% for category in all_category %}
+                    <li>{{category}}</li>
+                    {%endfor%}
+
+                    <a href="all-classifieds.html">All Ads</a>
+                </ul>
+                {% for categorys in all_category %}
+                <div class="resp-tabs-container hor_1">
+                    <span class="active total" style="display:block;" data-toggle="modal" data-target="#myModal"><strong>All USA</strong> (Select your city to see local ads)</span>
+                    <div>
+                        <div class="category">
+                            <div class="category-img">
+                                <img src="images/cat1.png" title="image" alt="" />
+                            </div>
+                            <div class="category-info">
+                                <h4>{{categorys}}</h4>
+                                <span>5,12,850 Ads</span>
+                                <a href="all-classifieds.html">View all Ads</a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="sub-categories">
+
+                            <ul>
+                                {% for sub_category in Category.maincategory.all %}
+
+                                <li><a href="mobiles.html">{{sub_category}}</a></li>
+
+                                {% endfor %}
+
+                                <div class="clearfix"></div>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+    <!--Plug-in Initialisation-->
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            //Vertical Tab
+            $('#parentVerticalTab').easyResponsiveTabs({
+                type: 'vertical', //Types: default, vertical, accordion
+                width: 'auto', //auto or any width like 600px
+                fit: true, // 100% fit in a container
+                closed: 'accordion', // Start closed if in accordion view
+                tabidentify: 'hor_1', // The tab groups identifier
+                activate: function(event) { // Callback function if tab is switched
+                    var $tab = $(this);
+                    var $info = $('#nested-tabInfo2');
+                    var $name = $('span', $info);
+                    $name.text($tab.text());
+                    $info.show();
+                }
+            });
+        });
+    </script>
+    <!-- //Categories -->
+    <!--footer section start-->
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="foo-grids">
+                    <div class="col-md-3 footer-grid">
+                        <h4 class="footer-head">Who We Are</h4>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                        <p>The point of using Lorem Ipsum is that it has a more-or-less normal letters, as opposed to using 'Content here.</p>
+                    </div>
+                    <div class="col-md-3 footer-grid">
+                        <h4 class="footer-head">Help</h4>
+                        <ul>
+                            <li><a href="howitworks.html">How it Works</a></li>
+                            <li><a href="sitemap.html">Sitemap</a></li>
+                            <li><a href="faq.html">Faq</a></li>
+                            <li><a href="feedback.html">Feedback</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="typography.html">Shortcodes</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 footer-grid">
+                        <h4 class="footer-head">Information</h4>
+                        <ul>
+                            <li><a href="regions.html">Locations Map</a></li>
+                            <li><a href="terms.html">Terms of Use</a></li>
+                            <li><a href="popular-search.html">Popular searches</a></li>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 footer-grid">
+                        <h4 class="footer-head">Contact Us</h4>
+                        <span class="hq">Our headquarters</span>
+                        <address>
+								<ul class="location">
+									<li><span class="glyphicon glyphicon-map-marker"></span></li>
+									<li>CENTER FOR FINANCIAL ASSISTANCE TO DEPOSED NIGERIAN ROYALTY</li>
+									<div class="clearfix"></div>
+								</ul>	
+								<ul class="location">
+									<li><span class="glyphicon glyphicon-earphone"></span></li>
+									<li>+0 561 111 235</li>
+									<div class="clearfix"></div>
+								</ul>	
+								<ul class="location">
+									<li><span class="glyphicon glyphicon-envelope"></span></li>
+									<li><a href="mailto:info@example.com">mail@example.com</a></li>
+									<div class="clearfix"></div>
+								</ul>						
+							</address>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        {% endblock body %}
