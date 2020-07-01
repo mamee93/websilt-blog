@@ -560,7 +560,7 @@
                                         <div class="clearfix"></div>
                                         <ul class="list">
                                             {% for ad in ads %}
-                                            <a href="single.html">
+                                            <a href="{% url 'ad:single_ad' ad.id %}">
                                                 <li>
                                                     <img src="{{ad.image.url}}" title="" alt="" />
                                                     <section class="list-left">

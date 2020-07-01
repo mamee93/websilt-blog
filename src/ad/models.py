@@ -18,8 +18,8 @@ class Ad(models.Model):
     image = models.ImageField(upload_to='ad/')
     content = models.TextField(blank=True, null=0)
     price = models.IntegerField(default=1)
-    category = models.ForeignKey('Category',limit_choices_to={'main_category':True},related_name='ad_category', on_delete=models.CASCADE)
-    condition = models.CharField(max_length=15,null=True, blank=True)
+    category = models.ForeignKey('Category',limit_choices_to={'main_category__isnull':True},related_name='ad_category', on_delete=models.CASCADE)
+    condition = models.CharField(max_length=15,choices=AD_CONDITION,null=True, blank=True)
     brand = models.ForeignKey('Brand',related_name='add_brand',null=True, blank=True, on_delete=models.CASCADE)
 
     views_count = models.IntegerField(default=0)

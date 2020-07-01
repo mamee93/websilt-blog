@@ -1,5 +1,5 @@
 
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from  .forms import AdForm
 from .models import Ad,Category
 # Create your views here.
@@ -13,13 +13,14 @@ def single_ad(request,id):
     return render(request,'ad/single.html',{'ad':ad})
 
 def all_categories(request):
-    all_category = Category.objects.filter(main_category = None)
+    all_category = Category.objects.filter(main_category=None)
 
     return render(request,'ad/all-categories.html',{'all_category':all_category})
 
 def category_ads(request,id):
-
-    return render(request,'ad/category_ads.html',{})
+    category = get_object_or_404(Category,id=id)
+    category_ads = Ad.objects.filter(category=category)
+    return render(request,'ad/category_ads.html',{'category_ads':category_ads})
 
 
 def add_ad(request):
